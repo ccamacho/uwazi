@@ -40,17 +40,17 @@
   }
 
   &.connections a.reference {
-    background-color: transparentize(yellow, 0.8);
+    background-color: transparentize($c-highlight, 0.8);
   }
 
   a.highlighted,
   &.connections a.highlighted {
-    background-color: transparentize(yellow, 0.8);
+    background-color: transparentize($c-highlight, 0.8);
     cursor: pointer;
   }
 
   &.connections a.is-active {
-    background-color: transparentize(yellow, 0.4);
+    background-color: transparentize($c-highlight, 0.4);
     cursor: pointer;
   }
 }
@@ -64,7 +64,7 @@ mark, .mark {
     background-color: transparent !important;
   }
   mark.is-keyword, .mark.is-keyword {
-    background-color: transparentize(yellow, 0.8) !important;
+    background-color: transparentize($c-highlight, 0.8) !important;
   }
 }
 

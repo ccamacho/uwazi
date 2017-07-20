@@ -188,8 +188,8 @@
     text-decoration: none;
   }
   b {
-    background-color: transparentize(yellow, 0.4);
-    box-shadow: -2px 0 0 0 transparentize(yellow, 0.4), 2px 0 0 0 transparentize(yellow, 0.4);
+    background-color: transparentize($c-highlight, 0.4);
+    box-shadow: -2px 0 0 0 transparentize($c-highlight, 0.4), 2px 0 0 0 transparentize($c-highlight, 0.4);
   }
 
   .fa {
@@ -798,7 +798,6 @@ label.multiselectItem-label {
   b {
     font-weight: normal;
     color: #333300;
-    background-color: transparentize(yellow, 0.8);
-    // box-shadow: -2px 0 0 0 transparentize(yellow, 0.4), 2px 0 0 0 transparentize(yellow, 0.4);
+    background-color: $c-highlight-lighten;
   }
 }
