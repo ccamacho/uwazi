@@ -785,6 +785,12 @@ label.multiselectItem-label {
   li:not(:last-of-type) {
     border-bottom: 1px solid $c-grey-light;
   }
+  
+  li.is-selected {
+    background-color: $c-bootstrap-primary-lighten;
+    border-bottom-color: $c-bootstrap-primary-light;
+  }
+  
   a {
     padding: 15px;
   }
