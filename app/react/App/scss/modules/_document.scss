@@ -57,10 +57,14 @@
 
 mark, .mark {
   color: transparent !important;
-  background-color: transparentize(yellow, 0.8) !important;
+  background-color: transparentize($c-bootstrap-primary-light, 0.85) !important;
+  box-shadow: 0 1px 0 $c-bootstrap-primary-light;
   padding: 0 !important;
   mark, .mark {
     background-color: transparent !important;
+  }
+  mark.is-keyword, .mark.is-keyword {
+    background-color: transparentize(yellow, 0.8) !important;
   }
 }
 
