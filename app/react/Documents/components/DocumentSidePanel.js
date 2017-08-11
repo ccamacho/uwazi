@@ -207,8 +207,14 @@ export class DocumentSidePanel extends Component {
           <Tabs selectedTab={this.props.tab || 'metadata'}>
             <TabContent for="text-search">
               <SearchText doc={doc} storeKey={this.props.storeKey} searchTerm={this.props.searchTerm}/>
+              <div className="blank-state">
+                <span>BLANK STATE</span>
+              </div>
             </TabContent>
             <TabContent for="toc">
+              <div className="blank-state">
+                <span>BLANK STATE</span>
+              </div>
               <ShowIf if={!this.props.tocBeingEdited}>
                 <ShowToc toc={doc.get('toc')} readOnly={readOnly} />
               </ShowIf>
@@ -235,6 +241,9 @@ export class DocumentSidePanel extends Component {
                 return (
                   <div>
                     <ShowMetadata entity={this.props.metadata} showTitle={true} showType={true} />
+                    <div className="blank-state">
+                      <span>BLANK STATE</span>
+                    </div>
                     <AttachmentsList files={fromJS(attachments)}
                       readOnly={false}
                       isTargetDoc={this.props.isTargetDoc}
@@ -247,6 +256,9 @@ export class DocumentSidePanel extends Component {
               })()}
             </TabContent>
             <TabContent for="references">
+              <div className="blank-state">
+                <span>BLANK STATE</span>
+              </div>
               <Connections
                 referencesSection="references"
                 references={references}
@@ -254,6 +266,9 @@ export class DocumentSidePanel extends Component {
               />
             </TabContent>
             <TabContent for="connections">
+              <div className="blank-state">
+                <span>BLANK STATE</span>
+              </div>
               <Connections references={connections}
                 readOnly={readOnly}
                 referencesSection="connections"

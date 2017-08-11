@@ -86,6 +86,9 @@ export default class Library extends RouteHandler {
         <Helmet title={t('System', 'Library')} />
         <main className="document-viewer with-panel">
           {/*<ListChartToggleButtons active={chartView ? 'chart' : 'list'} />*/}
+          <div className="blank-state">
+            <span>BLANK STATE</span>
+          </div>
           {mainView}
         </main>
         <LibraryFilters storeKey="library"/>
