@@ -7,8 +7,7 @@ const queries = [
   {order: 'desc', searchTerm: 'victima', sort: 'metadata.fecha'},
   {searchTerm: 'corte'},
   {searchTerm: 'resolucion interamericana'},
-  {order: 'asc', searchTerm: 'victima', sort: 'metadata.fecha'},
-  {filters: {pa_s: {values: ['q223u6ha4zsq0k9']}}
+  {order: 'asc', searchTerm: 'victima', sort: 'metadata.fecha'}
 ];
 
 fdescribe('elasticsearch performance', () => {

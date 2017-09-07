@@ -98,7 +98,7 @@ export default {
           return result;
         });
 
-        return {rows, totalRows: response.hits.total, aggregations: response.aggregations};
+        return {rows, totalRows: response.hits.total, aggregations: response.aggregations, took: response.took};
       });
     });
   },
