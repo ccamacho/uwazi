@@ -21,7 +21,10 @@ fdescribe('elasticsearch performance', () => {
       });
     }))
     .then((results) => {
-      return results.reduce((t, r) => t + r.took, 0) / results.length;
+      return results.reduce((t, r) => {
+        console.log('took:', r.took);
+        return t + r.took;
+      }, 0) / results.length;
     })
     .then((total) => {
       console.log(total);
