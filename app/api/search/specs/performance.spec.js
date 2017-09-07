@@ -15,7 +15,8 @@ const queries = [
   {filters: {pa_s: {values: ['q223u6ha4zsq0k9']}}, order: 'desc', searchTerm: 'resolucion interamericana', sort: 'metadata.fecha', types: ['58b2f3a35d59f31e1345b4ac','58b2f3a35d59f31e1345b471','58b2f3a35d59f31e1345b482','58b2f3a35d59f31e1345b479']},
   {searchTerm: 'guatemala'},
   {order: 'desc', searchTerm: 'guatemala', sort: 'metadata.fecha'},
-  {filters: {pa_s: {values: ['q223u6ha4zsq0k9']}}, order: 'desc', searchTerm: 'guatemala', sort: 'metadata.fecha', types: ['58b2f3a35d59f31e1345b4ac','58b2f3a35d59f31e1345b471','58b2f3a35d59f31e1345b482','58b2f3a35d59f31e1345b479']}
+  {filters: {pa_s: {values: ['q223u6ha4zsq0k9']}}, order: 'desc', searchTerm: 'guatemala', sort: 'metadata.fecha', types: ['58b2f3a35d59f31e1345b4ac','58b2f3a35d59f31e1345b471','58b2f3a35d59f31e1345b482','58b2f3a35d59f31e1345b479']},
+  {filters: {firmantes: {values: ['wbaxp4ebvu2z9f6r']}, pa_s: {values: ['q223u6ha4zsq0k9']}}, order: 'desc', searchTerm: 'guatemala', sort: 'metadata.fecha', types: ['58b2f3a35d59f31e1345b4ac','58b2f3a35d59f31e1345b471','58b2f3a35d59f31e1345b482','58b2f3a35d59f31e1345b479']}
 ];
 
 Promise.all(queries.map((query, index) => {
