@@ -60,7 +60,8 @@ export class Item extends Component {
       if (!property.value && 'metadata.' + property.name === this.props.search.sort) {
         return (
           <dl key={index}>
-            <dd className="item-metadata-empty">{t('System', 'No')} {property.label}</dd>
+            <dt>{t(property.context || translationContext, property.label)}</dt>
+            <dd className={isSortingProperty ? 'item-current-sort' : ''}>&mdash;</dd>
           </dl>
         );
       }
@@ -73,7 +74,8 @@ export class Item extends Component {
     if (!isTitleOrCreationDate && !sortPropertyInMetadata) {
       metadata.push(
         <dl key={metadata.length}>
-          <dd className="item-metadata-empty">Item does not have the sorting property</dd>
+          <dt>Propery label</dt>
+          <dd className="item-current-sort">&mdash;</dd>
         </dl>
       );
     }
