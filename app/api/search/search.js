@@ -6,6 +6,7 @@ import model from '../entities/entitiesModel';
 import templatesModel from '../templates';
 import {comonProperties} from 'shared/comonProperties';
 import languages from 'shared/languages';
+import conversor from './elasticConversor';
 
 function processFiltes(filters, properties) {
   let result = {};
@@ -200,18 +201,21 @@ export default {
   },
 
   indexEntities(query, select, limit = 200) {
-    const index = (offset, totalRows) => {
-      if (offset >= totalRows) {
-        return;
-      }
+    return templatesModel.get()
+    .then((templates) => {
+      const index = (offset, totalRows) => {
+        if (offset >= totalRows) {
+          return;
+        }
 
-      return entities.get(query, select, {skip: offset, limit})
-      .then((docs) => this.bulkIndex(docs))
-      .then(() => index(offset + limit, totalRows));
-    };
-    return entities.count(query)
-    .then((totalRows) => {
-      return index(0, totalRows);
+        return entities.get(query, select, {skip: offset, limit})
+        .then((docs) => this.bulkIndex(conversor.docsToElastic(docs, templates)))
+        .then(() => index(offset + limit, totalRows));
+      };
+      return entities.count(query)
+      .then((totalRows) => {
+        return index(0, totalRows);
+      });
     });
   },
 

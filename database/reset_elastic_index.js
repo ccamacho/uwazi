@@ -5,12 +5,15 @@ import elasticMapping from './elastic_mapping';
 
 import indexConfig from '../app/api/config/elasticIndexes';
 import entities from '../app/api/entities/entitiesModel';
+import conversor from '../app/api/search/elasticConversor';
+import templatesModel from '../app/api/templates';
 import mongoose from 'mongoose';
 
 const limit = 200;
 let docsIndexed = 0;
 let pos = 0;
 let spinner = ['|', '/', '-', '\\'];
+let templates = [];
 
 function migrate(offset, totalRows) {
   return entities.get({}, '+fullText', {skip: offset, limit})
@@ -19,7 +22,7 @@ function migrate(offset, totalRows) {
       return;
     }
 
-    return search.bulkIndex(docsResponse, 'index')
+    return search.bulkIndex(conversor.docsToElastic(docsResponse, templates), 'index')
     .then((res) => {
       res.items.forEach((f) => {
         if (f.index.error) {
@@ -50,8 +53,12 @@ request.delete(indexUrl)
   request.put(indexUrl, elasticMapping).catch(console.log);
 })
 .then(() => {
-  return entities.count()
-  .then((total_rows) => {
+  return Promise.all([
+    entities.count(),
+    templatesModel.get()
+  ])
+  .then(([total_rows, _templates]) => {
+    templates = _templates;
     return migrate(0, total_rows)
     .catch((error) => {
       console.log('Migration error: ', error);
