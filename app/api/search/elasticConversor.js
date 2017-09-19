@@ -7,6 +7,9 @@ const extractTemplateNameMapping = (template) => {
 };
 
 const convertDocMetadata = (doc, mapping) => {
+  if (!doc.metadata) {
+    return doc;
+  }
   const docMetadata = doc.metadata;
   doc.metadata = {};
   Object.keys(docMetadata).forEach((name) => {
@@ -17,7 +20,6 @@ const convertDocMetadata = (doc, mapping) => {
 
 export default {
   docsToElastic(docs, templates) {
-    const start = Date.now();
     let nameMappings = {};
 
     templates.forEach((template) => {

@@ -151,9 +151,13 @@ export default function () {
     },
 
     textFilter(filters, property) {
-      let match = {match: {}};
-      match.match[`metadata.${property}`] = filters[property].value;
-      return match;
+      let textFilter = {bool: {should: []}};
+      textFilter.bool.should = filters[property].commonIds.map((id) => {
+        let match = {match: {}};
+        match.match[`metadata.${id}`] = filters[property].value;
+        return match;
+      });
+      return textFilter;
     },
 
     rangeFilter(filters, property) {

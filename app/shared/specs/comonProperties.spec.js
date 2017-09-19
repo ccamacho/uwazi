@@ -3,19 +3,19 @@ import {comonProperties} from '../comonProperties';
 describe('comonProperties', () => {
   let templates = [
     {_id: '1', properties: [
-      {name: 'author', filter: false, type: 'text'},
-      {name: 'country', filter: true, type: 'select', content: 'abc1'},
-      {name: 'date', filter: true, type: 'text'},
-      {name: 'language', filter: true, type: 'text'}
+      {_id: 1, name: 'author', filter: false, type: 'text'},
+      {_id: 2, name: 'country', filter: true, type: 'select', content: 'abc1'},
+      {_id: 3, name: 'date', filter: true, type: 'text'},
+      {_id: 4, name: 'language', filter: true, type: 'text'}
     ]},
     {_id: '2', properties: [
-      {name: 'author', filter: false, type: 'text'},
-      {name: 'country', filter: true, type: 'select', content: 'abc1'},
-      {name: 'language', filter: false, type: 'text', required: true}
+      {_id: 7, name: 'author', filter: false, type: 'text'},
+      {_id: 8, name: 'country', filter: true, type: 'select', content: 'abc1'},
+      {_id: 9, name: 'language', filter: false, type: 'text', required: true}
     ]},
     {_id: '3', properties: [
-      {name: 'author', filter: false, type: 'markdown'},
-      {name: 'country', filter: true, type: 'text'}
+      {_id: 12, name: 'author', filter: false, type: 'markdown'},
+      {_id: 13, name: 'country', filter: true, type: 'text'}
     ]}
   ];
 
@@ -28,10 +28,10 @@ describe('comonProperties', () => {
         let filters = comonProperties(templates, documentTypes, thesauris);
         expect(filters)
         .toEqual([
-          {name: 'author', filter: false, type: 'text'},
-          {name: 'country', filter: true, type: 'select', content: 'abc1'},
-          {name: 'date', filter: true, type: 'text'},
-          {name: 'language', filter: true, type: 'text'}
+          {name: 'author', filter: false, type: 'text', commonIds: [1]},
+          {name: 'country', filter: true, type: 'select', content: 'abc1', commonIds: [2]},
+          {name: 'date', filter: true, type: 'text', commonIds: [3]},
+          {name: 'language', filter: true, type: 'text', commonIds: [4]}
         ]);
       });
     });
@@ -41,9 +41,9 @@ describe('comonProperties', () => {
         let documentTypes = ['1', '2'];
         let filters = comonProperties(templates, documentTypes);
         expect(filters).toEqual([
-          {name: 'author', filter: false, type: 'text'},
-          {name: 'country', filter: true, type: 'select', content: 'abc1'},
-          {name: 'language', filter: false, type: 'text', required: true}
+          {name: 'author', filter: false, type: 'text', commonIds: [1, 7]},
+          {name: 'country', filter: true, type: 'select', content: 'abc1', commonIds: [2, 8]},
+          {name: 'language', filter: false, type: 'text', required: true, commonIds: [4, 9]}
         ]);
       });
 

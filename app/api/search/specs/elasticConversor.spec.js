@@ -1,6 +1,6 @@
 import conversor from '../elasticConversor';
 
-fdescribe('elasticConversor', () => {
+describe('elasticConversor', () => {
   describe('docsToElastic', () => {
     it('should rename all metadata properties with the id of the template property', () => {
       const docs = [{

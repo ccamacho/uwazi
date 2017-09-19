@@ -25,7 +25,7 @@ function processFiltes(filters, properties) {
     if (property.type === 'multidaterange' || property.type === 'daterange') {
       type = 'nestedrange';
     }
-    result[property.name] = {value: filters[property.name], type};
+    result[property.name] = {value: filters[property.name], type, commonIds: property.commonIds};
   });
 
   return result;
@@ -74,6 +74,7 @@ export default {
       });
 
       const filters = processFiltes(query.filters, properties);
+
       documentsQuery.filterMetadata(filters)
       .aggregations(aggregations);
 

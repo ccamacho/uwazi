@@ -45,7 +45,7 @@ export default {
       }
     },
     {_id: db.id(), sharedId: 'metadata4', template: templateMetadata2, language: 'en', title: 'metadata5', published: true, user: userId,
-      metadata: {field1: 'penguin', field3: 'joker',
+      metadata: {field1: 'joker', field3: 'joker',
         nestedField: [
           {nested1: ['5', '6', '7']}
         ]
@@ -62,18 +62,18 @@ export default {
     {_id: template1, properties: []},
     {_id: template2, properties: []},
     {_id: templateMetadata1, properties: [
-      {name: 'field1', type: 'text'},
-      {name: 'field2', type: 'text'},
-      {name: 'select1', type: 'select'},
-      {name: 'multiselect1', type: 'multiselect'},
-      {name: 'nestedField', type: 'nested', nestedProperties: ['nested1', 'nested2']}
+      {_id: db.id(), name: 'field1', type: 'text'},
+      {_id: db.id(), name: 'field2', type: 'text'},
+      {_id: db.id(), name: 'select1', type: 'select'},
+      {_id: db.id(), name: 'multiselect1', type: 'multiselect'},
+      {_id: db.id(), name: 'nestedField', type: 'nested', nestedProperties: ['nested1', 'nested2']}
     ]},
     {_id: templateMetadata2, properties: [
-      {name: 'field1', type: 'text'},
-      {name: 'field3', type: 'text'},
-      {name: 'select1', type: 'select'},
-      {name: 'multiselect1', type: 'multiselect'},
-      {name: 'nestedField', type: 'nested', nestedProperties: ['nested1', 'nested2']}
+      {_id: db.id(), name: 'field1', type: 'text'},
+      {_id: db.id(), name: 'field3', type: 'text'},
+      {_id: db.id(), name: 'select1', type: 'select'},
+      {_id: db.id(), name: 'multiselect1', type: 'multiselect'},
+      {_id: db.id(), name: 'nestedField', type: 'nested', nestedProperties: ['nested1', 'nested2']}
     ]}
   ]
 };

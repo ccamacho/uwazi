@@ -24,10 +24,14 @@ export default {
     if (selectedTemplates.length) {
       selectedTemplates[0].properties.forEach((_property) => {
         if (allTemplatesHaveIt(selectedTemplates, _property)) {
+          let commonIds = [];
           let property = selectedTemplates.reduce((result, tmpl) => {
             let prop = tmpl.properties.find((_prop) => sameProperty(_prop, _property), {});
+            commonIds.push(prop._id);
             return prop.required ? prop : result;
           }, _property);
+          property.commonIds = commonIds;
+          delete property._id;
           properties.push(Object.assign({}, property));
         }
       });
